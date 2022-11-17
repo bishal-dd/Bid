@@ -1,0 +1,73 @@
+body {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+#navbar {
+  background-color: rgb(120, 236, 233);
+  color: rgb(248, 248, 248);
+}
+a:hover {
+  background-color: rgb(252, 195, 142);
+}
+a {
+  color: white;
+  border-radius: 25px;
+}
+#searchbutton:hover {
+  background-color: rgb(252, 195, 142);
+}
+#searchbutton {
+  background-color: rgb(120, 236, 233);
+}
+.card {
+  width: 300px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#mainrow {
+  width: fit-content;
+  margin-left: 30px;
+}
+.btn {
+  background-color: rgb(233, 139, 52);
+}
+.btn:hover {
+  background-color: rgb(120, 236, 233);
+}
+#box1 {
+  width: 600px;
+  padding: 40px;
+  align-items: center;
+  background-color: rgb(42, 130, 185);
+  box-shadow: 0 10px 8px 0 rgba(0, 0, 0, 0.2), 0 20px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#dechen,
+#dechen1,
+#dechen2,
+#dechen3 {
+  margin-top: 20px;
+}
+.additemtexbox {
+  height: 40px;
+  width: 300px;
+}
+#loglink {
+  width: 200px;
+  height: 50px;
+}
+#box {
+  width: 550px;
+  background-color: rgb(64, 119, 182);
+  box-shadow: 0 10px 8px 0 rgba(0, 0, 0, 0.2), 0 20px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#uname,
+#password {
+  height: 40px;
+}
+#for {
+  color: black;
+  align-items: right;
+}
+#for1 {
+  color: black;
+  margin-left: 150px;
+}
