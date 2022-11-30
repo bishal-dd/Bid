@@ -41,6 +41,18 @@ export default function AdditemComp() {
                 <input type="text" class="additemtexbox" />
               </div>
             </div>
+            <div class="row" id="dechen4">
+              <div class="col">
+                <p class="h2">Description</p>
+              </div>
+              <div class="col">
+                <textarea
+                  vlaue="Enter description"
+                  cols="30"
+                  rows="5"
+                ></textarea>
+              </div>
+            </div>
           </div>
 
           <div class="p-3 text-center">

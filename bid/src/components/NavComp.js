@@ -5,7 +5,7 @@ export default function NavComp() {
   return (
     <>
       <div>
-        <nav class="navbar navbar-expand" id="navbar">
+        <nav class="navbar navbar-expand sticky" id="navbar">
           <div class="container-fluid">
             <button
               class="navbar-toggler"
