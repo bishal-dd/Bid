@@ -7,7 +7,7 @@ export default function LoginComp() {
       <div class="p-3">
         <p class="h1 text-center">Login</p>
       </div>
-      <form>
+      <form autoComplete="off">
         <div
           class="container-sm border border-3 border-dark rounded-5"
           id="box"
