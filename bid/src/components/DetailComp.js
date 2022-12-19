@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
+import Modal from "react-bootstrap/Modal";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 export default function DetailComp() {
+  const [show, setshow] = useState(false);
+
+  const handelShow = () => setshow(true);
+  const handelClose = () => setshow(false);
   return (
     <>
       <div class="row container">
@@ -16,11 +23,27 @@ export default function DetailComp() {
           <h4>Current Bid:10,000</h4>
           <h4>Time remaining:10:23:90</h4>
           <p>
-            <a href="#" class="btn">
+            <Button class="btn" onClick={handelShow}>
               Place Bid
-            </a>
+            </Button>
           </p>
         </div>
+        <Modal show={show} onHide={handelClose}>
+          <Modal.Header>
+            <Modal.Title>Bid</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form>
+              <Form.Group>
+                <Form.Label>Place your Bid</Form.Label>
+                <Form.Control type="text" />
+              </Form.Group>
+            </Form>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={handelClose}>Bid</Button>
+          </Modal.Footer>
+        </Modal>
       </div>
     </>
   );
