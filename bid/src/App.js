@@ -8,6 +8,7 @@ import DetailComp from "./components/DetailComp";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AdditemComp from "./components/AdditemComp";
+import Search from "./components/Search";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/signup" element={<SignupComp />} />
         <Route path="/detail" element={<DetailComp />} />
         <Route path="/add" element={<AdditemComp />} />
+        <Route path="/search" element={<Search />} />
       </Routes>
     </BrowserRouter>
   );
