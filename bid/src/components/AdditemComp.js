@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { add_products } from "../store/reducers/productSlice";
 import { useNavigate } from "react-router-dom";
+import db from "../firebase";
+import { collection, addDoc } from "firebase/firestore/lite";
 
 export default function AdditemComp() {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+
   const [values, setValues] = useState({
     product_name: "",
     product_price: "",
@@ -23,14 +23,16 @@ export default function AdditemComp() {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(
-      add_products({
+    try {
+      addDoc(collection(db, "Products"), {
         product_name: values.product_name,
         product_price: values.product_price,
         product_time: values.product_time,
         product_description: values.product_description,
-      })
-    );
+      });
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
     setValues({
       product_name: "",
       product_price: "",
