@@ -1,6 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { add_products } from "../store/reducers/productSlice";
 
 export default function AdditemComp() {
+  const dispatch = useDispatch();
+  const [values, setValues] = useState({
+    product_name: "",
+    product_price: "",
+    product_time: "",
+    product_description: "",
+  });
+
+  const handelchange = (e) => {
+    setValues({
+      ...values,
+      [e.currentTarget.name]: [e.currentTarget.value],
+    });
+  };
+
   return (
     <>
       <div>
@@ -14,7 +31,13 @@ export default function AdditemComp() {
                 <p class="h2">Enter Product</p>
               </div>
               <div class="col">
-                <input type="text" class="additemtexbox" />
+                <input
+                  type="text"
+                  name="product_name"
+                  class="additemtexbox"
+                  value={values.product_name}
+                  onChange={handelchange}
+                />
               </div>
             </div>
             <div class="row" id="dechen1">
@@ -22,7 +45,7 @@ export default function AdditemComp() {
                 <p class="h2">Insert Image</p>
               </div>
               <div class="col">
-                <input type="file" class="additemtexbox" />
+                <input type="file" class="additemtexbox" name="product_image" />
               </div>
             </div>
             <div class="row" id="dechen2">
@@ -30,7 +53,12 @@ export default function AdditemComp() {
                 <p class="h2">Enter Price</p>
               </div>
               <div class="col">
-                <input type="text" class="additemtexbox" />
+                <input
+                  type="text"
+                  class="additemtexbox"
+                  onChange={handelchange}
+                  name="product_price"
+                />
               </div>
             </div>
             <div class="row" id="dechen3">
@@ -38,7 +66,14 @@ export default function AdditemComp() {
                 <p class="h2">Days Available</p>
               </div>
               <div class="col">
-                <input type="text" class="additemtexbox" />
+                <input
+                  type="number"
+                  class="additemtexbox"
+                  value={values.product_time}
+                  onChange={handelchange}
+                  name="product_time"
+                  placeholder="0"
+                />
               </div>
             </div>
             <div class="row" id="dechen4">
@@ -47,16 +82,18 @@ export default function AdditemComp() {
               </div>
               <div class="col">
                 <textarea
-                  vlaue="Enter description"
                   cols="30"
                   rows="5"
+                  value={values.product_description}
+                  onChange={handelchange}
+                  name="product_description"
                 ></textarea>
               </div>
             </div>
           </div>
 
           <div class="p-3 text-center">
-            <a href="" class="btn btn-light" id="loglink">
+            <a class="btn btn-light" id="loglink">
               ADD
             </a>
           </div>

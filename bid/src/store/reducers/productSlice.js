@@ -2,18 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = [
   {
-    product_name: "LED TV",
-    product_price: 10000,
-    product_time: 89,
+    product_name: "",
+    product_price: 0,
+    product_time: 0,
     product_image: "",
-    product_description: "ewklelk",
-  },
-  {
-    product_name: "Chair",
-    product_price: 6000,
-    product_time: 44,
-    product_image: "",
-    product_description: "ewnewne",
+    product_description: "",
   },
 ];
 
