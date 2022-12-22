@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { add_products } from "../store/reducers/productSlice";
+import { useNavigate } from "react-router-dom";
 
 export default function AdditemComp() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [values, setValues] = useState({
     product_name: "",
@@ -16,6 +18,26 @@ export default function AdditemComp() {
       ...values,
       [e.currentTarget.name]: [e.currentTarget.value],
     });
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    dispatch(
+      add_products({
+        product_name: values.product_name,
+        product_price: values.product_price,
+        product_time: values.product_time,
+        product_description: values.product_description,
+      })
+    );
+    setValues({
+      product_name: "",
+      product_price: "",
+      product_time: "",
+      product_description: "",
+    });
+    navigate("/");
   };
 
   return (
@@ -93,7 +115,7 @@ export default function AdditemComp() {
           </div>
 
           <div class="p-3 text-center">
-            <a class="btn btn-light" id="loglink">
+            <a class="btn btn-light" id="loglink" onClick={onSubmit}>
               ADD
             </a>
           </div>
