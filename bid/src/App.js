@@ -20,7 +20,7 @@ function App() {
         <Route path="/about" element={<AboutComp />} />
         <Route path="/login" element={<LoginComp />} />
         <Route path="/signup" element={<SignupComp />} />
-        <Route path="/detail" element={<DetailComp />} />
+        <Route path="/detail/:id" element={<DetailComp />} />
         <Route path="/add" element={<AdditemComp />} />
         <Route path="/search" element={<Search />} />
       </Routes>
