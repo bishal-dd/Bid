@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink, useNavigation } from "react-router-dom";
-import { collection, getDocs } from "firebase/firestore";
+import db, { getProducts } from "../firebase";
 
 export default function HomeComp() {
+  const [productList, setproductList] = useState([]);
   const product = [
     {
       id: 1,
@@ -24,10 +25,16 @@ export default function HomeComp() {
     },
   ];
 
+  useEffect(() => {
+    getProducts(db).then((a) => {
+      setproductList(a);
+    });
+  }, []);
+
   return (
     <>
       <div class="row mt-4" id="mainrow">
-        {product.map((products) => (
+        {productList.map((products) => (
           <div class="col">
             <div class="card">
               <a to="/detail">

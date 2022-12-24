@@ -5,6 +5,7 @@ import { collection, addDoc } from "firebase/firestore/lite";
 
 export default function AdditemComp() {
   const navigate = useNavigate();
+  const [image, setimgae] = useState();
 
   const [values, setValues] = useState({
     product_name: "",

@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore/lite";
+import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
 
 const firebaseConfig = {
   apiKey: "AIzaSyC8nSHKT5zZ4wOdp-xaF-Re4VTJ3csGLF0",
@@ -13,5 +13,14 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+
+async function getProducts(db) {
+  const productCol = collection(db, "Products");
+  const productSnapshot = await getDocs(productCol);
+  const productList = productSnapshot.docs.map((doc) => doc.data());
+  return productList;
+}
+
+export { getProducts };
 
 export default db;
