@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import db from "../firebase";
+import db, { storage } from "../firebase";
 import { collection, addDoc } from "firebase/firestore/lite";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 export default function AdditemComp() {
   const navigate = useNavigate();
-  const [image, setimgae] = useState();
+  const [productImg, setProductImg] = useState(null);
+  const [error, setError] = useState("");
 
   const [values, setValues] = useState({
     product_name: "",
@@ -21,26 +23,56 @@ export default function AdditemComp() {
     });
   };
 
-  const onSubmit = (e) => {
+  const types = ["image/png", "image/jpeg"]; // image types
+
+  const productImgHandler = (e) => {
+    let selectedFile = e.target.files[0];
+    if (selectedFile && types.includes(selectedFile.type)) {
+      setProductImg(selectedFile);
+
+      setError("");
+    } else {
+      setProductImg(null);
+      setError("Please select a valid image type (jpg or png)");
+    }
+  };
+
+  const onSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      addDoc(collection(db, "Products"), {
+      // Upload the file to storage
+      const uploadTask = ref(storage, `images/${productImg.name}`);
+      await uploadBytes(uploadTask, productImg);
+      console.log("file uploaded");
+
+      // Get the download URL for the file
+      const url = await getDownloadURL(uploadTask);
+      console.log(`File URL: ${url}`);
+
+      // Add the product to the database
+      await addDoc(collection(db, "Products"), {
         product_name: values.product_name,
         product_price: values.product_price,
+        product_image: url,
         product_time: values.product_time,
         product_description: values.product_description,
       });
-    } catch (e) {
-      console.error("Error adding document: ", e);
+      console.log("Product added to database");
+
+      // Reset the form values
+      setValues({
+        product_name: "",
+        product_price: "",
+        product_time: "",
+        product_description: "",
+      });
+
+      // Navigate to the home page
+      navigate("/");
+    } catch (error) {
+      console.error(`Error: ${error.message}`);
     }
-    setValues({
-      product_name: "",
-      product_price: "",
-      product_time: "",
-      product_description: "",
-    });
-    navigate("/");
   };
 
   return (
@@ -70,7 +102,14 @@ export default function AdditemComp() {
                 <p class="h2">Insert Image</p>
               </div>
               <div class="col">
-                <input type="file" class="additemtexbox" name="product_image" />
+                <input
+                  type="file"
+                  class="additemtexbox"
+                  name="product_image"
+                  id="file"
+                  required
+                  onChange={productImgHandler}
+                />
               </div>
             </div>
             <div class="row" id="dechen2">
@@ -122,6 +161,7 @@ export default function AdditemComp() {
               ADD
             </a>
           </div>
+          {error && <span className="error-msg">{error}</span>}
         </form>
       </div>
     </>

@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyC8nSHKT5zZ4wOdp-xaF-Re4VTJ3csGLF0",
@@ -13,6 +14,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const storage = getStorage(app);
 
 async function getProducts(db) {
   const productCol = collection(db, "Products");
@@ -21,6 +23,6 @@ async function getProducts(db) {
   return productList;
 }
 
-export { getProducts };
+export { getProducts, storage };
 
 export default db;
