@@ -1,13 +1,37 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useRef, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase";
 
-export default function LoginComp() {
+export default function LoginComp({ history }) {
+  const navigate = useNavigate();
+  const emailRef = useRef("");
+  const passwordRef = useRef("");
+
+  const handleSignin = useCallback(
+    async (event) => {
+      event.preventDefault();
+      try {
+        await signInWithEmailAndPassword(
+          auth,
+          emailRef.current.value,
+          passwordRef.current.value
+        );
+        navigate("/");
+      } catch (error) {
+        alert(error);
+      }
+    },
+    [history]
+  );
   return (
     <>
       <div class="p-3">
         <p class="h1 text-center">Login</p>
       </div>
-      <form autoComplete="off">
+      <form autoComplete="off" onSubmit={handleSignin}>
         <div
           class="container-sm border border-3 border-dark rounded-5"
           id="box"
@@ -15,7 +39,7 @@ export default function LoginComp() {
           <div class="row d-flex justify-content-center mt-5">
             <div class="col-md-6 mb-5">
               <label for="uname" class="labels">
-                UserName
+                Email
               </label>
               <input
                 type="text"
@@ -23,6 +47,7 @@ export default function LoginComp() {
                 placeholder="UserName"
                 size="30"
                 id="uname"
+                ref={emailRef}
               />
             </div>
             <hr class="mb-3" />
@@ -37,6 +62,7 @@ export default function LoginComp() {
                   placeholder="Password"
                   size="30"
                   id="password"
+                  ref={passwordRef}
                 />
               </div>
             </div>

@@ -1,7 +1,22 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { async } from "@firebase/util";
+import { signOut } from "firebase/auth";
+import React, { useContext } from "react";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Context/AuthContext";
+import { auth } from "../firebase";
 
 export default function NavComp() {
+  const { currentUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handelsignout = async (e) => {
+    e.preventDefault();
+
+    await signOut(auth).then(() => {
+      navigate("/login");
+    });
+  };
+  console.log(currentUser);
   return (
     <>
       <div>
@@ -49,24 +64,38 @@ export default function NavComp() {
               </ul>
               <div class="d-flex">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <Link
-                      class="nav-link active rounded-5"
-                      aria-current="page"
-                      to="/login"
-                    >
-                      Login
-                    </Link>
-                  </li>
-                  <li class="nav-item">
-                    <Link
-                      class="nav-link active rounded-5"
-                      aria-current="page"
-                      to="/add"
-                    >
-                      Add Item
-                    </Link>
-                  </li>
+                  {currentUser ? (
+                    <>
+                      <li class="nav-item">
+                        <a
+                          class="nav-link active rounded-5"
+                          aria-current="page"
+                          onClick={handelsignout}
+                        >
+                          Login out
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <Link
+                          class="nav-link active rounded-5"
+                          aria-current="page"
+                          to="/add"
+                        >
+                          Add Item
+                        </Link>
+                      </li>
+                    </>
+                  ) : (
+                    <li class="nav-item">
+                      <Link
+                        class="nav-link active rounded-5"
+                        aria-current="page"
+                        to="/login"
+                      >
+                        Login
+                      </Link>
+                    </li>
+                  )}
                 </ul>
               </div>
               <form class="d-flex" role="search">
