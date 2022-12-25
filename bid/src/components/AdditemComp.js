@@ -49,13 +49,19 @@ export default function AdditemComp() {
       // Get the download URL for the file
       const url = await getDownloadURL(uploadTask);
       console.log(`File URL: ${url}`);
+      const days = values.product_time;
+      const endDate = new Date();
+      endDate.setDate(endDate.getDate() + days);
 
+      const w3cTime = endDate.toISOString();
+
+      console.log(w3cTime);
       // Add the product to the database
       await addDoc(collection(db, "Products"), {
         product_name: values.product_name,
         product_price: values.product_price,
         product_image: url,
-        product_time: values.product_time,
+        product_time: w3cTime,
         product_description: values.product_description,
       });
       console.log("Product added to database");
