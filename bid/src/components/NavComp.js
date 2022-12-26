@@ -1,6 +1,6 @@
 import { async } from "@firebase/util";
 import { signOut } from "firebase/auth";
-import React, { useContext } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContext";
 import { auth } from "../firebase";
@@ -8,6 +8,7 @@ import { auth } from "../firebase";
 export default function NavComp() {
   const { currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [searchitem, setsearchitem] = useState("");
 
   const handelsignout = async (e) => {
     e.preventDefault();
@@ -104,14 +105,18 @@ export default function NavComp() {
                   type="search"
                   placeholder="Search"
                   aria-label="Search"
+                  onChange={(e) => {
+                    setsearchitem(e.target.value);
+                  }}
                 />
-                <button
+                <Link
                   class="btn btn-outline-dark"
                   type="submit"
                   id="searchbutton"
+                  to={`/search/${searchitem}`}
                 >
                   Search
-                </button>
+                </Link>
               </form>
             </div>
           </div>

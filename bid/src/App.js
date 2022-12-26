@@ -23,7 +23,7 @@ function App() {
           <Route path="/signup" element={<SignupComp />} />
           <Route path="/detail/:id" element={<DetailComp />} />
           <Route path="/add" element={<AdditemComp />} />
-          <Route path="/search" element={<Search />} />
+          <Route path="/search/:id" element={<Search />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
