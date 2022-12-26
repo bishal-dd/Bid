@@ -17,7 +17,7 @@ export default function DetailComp() {
   const updateProduct = async (e) => {
     e.preventDefault();
 
-    if (Number(bidRef.current.value) > Number(bidprice)) {
+    if (Number(bidRef.current.value) > Number(bidprice) && currentUser) {
       setbidprice(bidRef.current.value);
       setbidder(currentUser.email);
       const productRef = doc(db, "Products", product.product_id);
@@ -30,7 +30,7 @@ export default function DetailComp() {
         bidder: currentUser.email,
       });
     } else {
-      alert("Enter a bid that is higher than the current bid");
+      alert("Enter a bid that is higher than the current bid or Login");
     }
   };
   return (
