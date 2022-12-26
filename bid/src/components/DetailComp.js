@@ -3,7 +3,6 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useLocation } from "react-router-dom";
-import Countdow from "./CountdownComp";
 import CountdownComp from "./CountdownComp";
 
 export default function DetailComp() {
@@ -13,11 +12,8 @@ export default function DetailComp() {
   const bidRef = useRef();
   const [show, setshow] = useState(false);
 
-  const handelShow = () => setshow(true);
-  const handelClose = () => {
-    setshow(false);
-    setbidprice(bidRef.current.value);
-  };
+  setshow(false);
+  setbidprice(bidRef.current.value);
 
   return (
     <>
@@ -34,28 +30,14 @@ export default function DetailComp() {
           </h4>
           <p>{product.product_description}</p>
           <p>
-            <Button class="btn" onClick={handelShow}>
+            <input type="number" />
+          </p>
+          <p>
+            <a class="btn" onClick={handelShow}>
               Place Bid
-            </Button>
+            </a>
           </p>
         </div>
-
-        <Modal show={show} onHide={handelClose}>
-          <Modal.Header>
-            <Modal.Title>Bid</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Form>
-              <Form.Group>
-                <Form.Label>Place your Bid</Form.Label>
-                <Form.Control type="number" ref={bidRef} />
-              </Form.Group>
-            </Form>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button onClick={handelClose}>Bid</Button>
-          </Modal.Footer>
-        </Modal>
       </div>
     </>
   );
