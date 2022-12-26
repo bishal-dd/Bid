@@ -16,7 +16,7 @@ export default function NavComp() {
       navigate("/login");
     });
   };
-  console.log(currentUser);
+
   return (
     <>
       <div>

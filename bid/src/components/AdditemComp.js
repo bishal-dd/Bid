@@ -49,19 +49,25 @@ export default function AdditemComp() {
       // Get the download URL for the file
       const url = await getDownloadURL(uploadTask);
       console.log(`File URL: ${url}`);
-      const days = values.product_time;
-      const endDate = new Date();
-      endDate.setDate(endDate.getDate() + days);
 
-      const w3cTime = endDate.toISOString();
+      const daysLeftNum = Number(values.product_time[0]);
+      console.log(daysLeftNum);
 
-      console.log(w3cTime);
+      // Get the current date in the W3C format
+      const currentDate = new Date().toISOString();
+      console.log(currentDate);
+
+      // Subtract the number of days left from the current date
+      const newDate = new Date(currentDate);
+      newDate.setDate(newDate.getDate() + daysLeftNum);
+      const finalDate = newDate.toISOString();
+
       // Add the product to the database
       await addDoc(collection(db, "Products"), {
         product_name: values.product_name[0],
         product_price: values.product_price[0],
         product_image: url,
-        product_time: w3cTime,
+        product_time: finalDate,
         product_description: values.product_description[0],
       }).then(async (getid) => {
         await updateDoc(doc(db, "Products", getid.id), {
