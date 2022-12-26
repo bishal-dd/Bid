@@ -30,7 +30,7 @@ export default function HomeComp() {
                 <h5 class="card-title">{products.product_name}</h5>
                 <h6 class="card-title">Start:Nu.{products.product_price}</h6>
                 <Link
-                  to={`detail/ ${products.id}`}
+                  to={`detail/ ${products.product_id}`}
                   class="btn"
                   state={products}
                 >

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import db, { storage } from "../firebase";
-import { collection, addDoc } from "firebase/firestore/lite";
+import { collection, addDoc, updateDoc, doc } from "firebase/firestore/lite";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 export default function AdditemComp() {
@@ -58,11 +58,15 @@ export default function AdditemComp() {
       console.log(w3cTime);
       // Add the product to the database
       await addDoc(collection(db, "Products"), {
-        product_name: values.product_name,
-        product_price: values.product_price,
+        product_name: values.product_name[0],
+        product_price: values.product_price[0],
         product_image: url,
         product_time: w3cTime,
-        product_description: values.product_description,
+        product_description: values.product_description[0],
+      }).then(async (getid) => {
+        await updateDoc(doc(db, "Products", getid.id), {
+          product_id: getid.id,
+        });
       });
       console.log("Product added to database");
 
