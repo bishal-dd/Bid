@@ -87,14 +87,14 @@ export default function AdditemComp() {
       // Navigate to the home page
       navigate("/");
     } catch (error) {
-      console.error(`Error: ${error.message}`);
+      alert(`Error: ${error.message}`);
     }
   };
 
   return (
     <>
       <div>
-        <form>
+        <form onSubmit={onSubmit}>
           <div class="p-3">
             <p class="h1 text-center">Auction</p>
           </div>
@@ -110,6 +110,7 @@ export default function AdditemComp() {
                   class="additemtexbox"
                   value={values.product_name}
                   onChange={handelchange}
+                  required
                 />
               </div>
             </div>
@@ -138,6 +139,7 @@ export default function AdditemComp() {
                   class="additemtexbox"
                   onChange={handelchange}
                   name="product_price"
+                  required
                 />
               </div>
             </div>
@@ -153,6 +155,7 @@ export default function AdditemComp() {
                   onChange={handelchange}
                   name="product_time"
                   placeholder="0"
+                  required
                 />
               </div>
             </div>
@@ -167,15 +170,16 @@ export default function AdditemComp() {
                   value={values.product_description}
                   onChange={handelchange}
                   name="product_description"
+                  required
                 ></textarea>
               </div>
             </div>
           </div>
 
           <div class="p-3 text-center">
-            <a class="btn btn-light" id="loglink" onClick={onSubmit}>
+            <button type="submit" class="btn btn-light" id="loglink">
               ADD
-            </a>
+            </button>
           </div>
           {error && <span className="error-msg">{error}</span>}
         </form>

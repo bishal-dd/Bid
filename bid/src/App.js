@@ -9,24 +9,44 @@ import { AuthProvider } from "./Context/AuthContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AdditemComp from "./components/AdditemComp";
 import Search from "./components/Search";
+import LoadingScreen from "react-loading-screen";
+import { useEffect, useState } from "react";
 
 function App() {
-  return (
-    <AuthProvider>
-      <BrowserRouter>
-        <NavComp />
+  const [loading, setLoading] = useState(false);
 
-        <Routes>
-          <Route path="/" element={<HomeComp />} />
-          <Route path="/about" element={<AboutComp />} />
-          <Route path="/login" element={<LoginComp />} />
-          <Route path="/signup" element={<SignupComp />} />
-          <Route path="/detail/:id" element={<DetailComp />} />
-          <Route path="/add" element={<AdditemComp />} />
-          <Route path="/search/:id" element={<Search />} />
-        </Routes>
-      </BrowserRouter>
-    </AuthProvider>
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 5000);
+  }, []);
+
+  return (
+    <LoadingScreen
+      loading={loading}
+      bgColor="#f2f2f2"
+      spinnerColor="#07cbed"
+      textColor="black"
+      logoSrc="https://t4.ftcdn.net/jpg/04/83/17/69/360_F_483176994_Mvj1b9H2sKpq9T1xzoJy6CreJT7leHBL.jpg"
+      text="To make a Difference"
+    >
+      <AuthProvider>
+        <BrowserRouter>
+          <NavComp />
+
+          <Routes>
+            <Route path="/" element={<HomeComp />} />
+            <Route path="/about" element={<AboutComp />} />
+            <Route path="/login" element={<LoginComp />} />
+            <Route path="/signup" element={<SignupComp />} />
+            <Route path="/detail/:id" element={<DetailComp />} />
+            <Route path="/add" element={<AdditemComp />} />
+            <Route path="/search/:id" element={<Search />} />
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
+    </LoadingScreen>
   );
 }
 

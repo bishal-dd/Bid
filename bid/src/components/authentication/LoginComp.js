@@ -48,6 +48,7 @@ export default function LoginComp({ history }) {
                 size="30"
                 id="uname"
                 ref={emailRef}
+                required
               />
             </div>
             <hr class="mb-3" />
@@ -63,6 +64,7 @@ export default function LoginComp({ history }) {
                   size="30"
                   id="password"
                   ref={passwordRef}
+                  required
                 />
               </div>
             </div>
