@@ -15,7 +15,7 @@ export default function HomeComp() {
     <>
       <div class="row mt-4" id="mainrow">
         {productList.map((products) => (
-          <div class="col">
+          <div class="col mt-5">
             <div class="card">
               <a to="/detail">
                 <img
