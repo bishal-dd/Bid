@@ -35,7 +35,6 @@ a {
   background-color: rgb(120, 236, 233);
 }
 #box1 {
-  width: 600px;
   padding: 40px;
   align-items: center;
   background-color: rgb(42, 130, 185);
@@ -57,7 +56,6 @@ a {
   height: 50px;
 }
 #box {
-  width: 550px;
   background-color: rgb(64, 119, 182);
   box-shadow: 0 10px 8px 0 rgba(0, 0, 0, 0.2), 0 20px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -71,5 +69,4 @@ a {
 }
 #for1 {
   color: black;
-  margin-left: 150px;
 }

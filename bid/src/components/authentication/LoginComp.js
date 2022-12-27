@@ -33,17 +33,17 @@ export default function LoginComp({ history }) {
       </div>
       <form autoComplete="off" onSubmit={handleSignin}>
         <div
-          class="container-sm border border-3 border-dark rounded-5"
+          class="container-lg w-50 justify-content-center border border-3 border-dark rounded-5 "
           id="box"
         >
           <div class="row d-flex justify-content-center mt-5">
             <div class="col-md-6 mb-5">
               <label for="uname" class="labels">
-                Email
+                Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               </label>
               <input
                 type="text"
-                class="border border-top-0 border-right-0 border-left-0 rounded-5 mt-1"
+                class=" w-75  border border-top-0 border-right-0 border-left-0 rounded-5 mt-1"
                 placeholder="UserName"
                 size="30"
                 id="uname"
@@ -51,14 +51,14 @@ export default function LoginComp({ history }) {
               />
             </div>
             <hr class="mb-3" />
-            <div class="row d-flex justify-content-center">
+            <div class="row d-flex justify-content-center mt-5">
               <div class="col-md-6 mb-5">
                 <label for="password" class="labels">
-                  Password
+                  Password:
                 </label>
                 <input
                   type="password"
-                  class="border border-top-0 border-right-0 border-left-0 rounded-5 mt-1"
+                  class="w-75  border border-top-0 border-right-0 border-left-0 rounded-5 mt-1"
                   placeholder="Password"
                   size="30"
                   id="password"
@@ -67,16 +67,18 @@ export default function LoginComp({ history }) {
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col mb-3">
-              <a href="#" id="for">
-                Forgot password?
-              </a>
-            </div>
-            <div class="col mb-3">
-              <Link to="/signup" id="for1">
-                Signup?
-              </Link>
+          <div class="container-xxl overflow-hidden">
+            <div class="row gx-5">
+              <div class="col mb-3">
+                <a href="#" id="for">
+                  Forgot password?
+                </a>
+              </div>
+              <div class="col mb-3">
+                <Link to="/signup" id="for1">
+                  Signup?
+                </Link>
+              </div>
             </div>
           </div>
         </div>

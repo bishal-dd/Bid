@@ -1,7 +1,7 @@
 import React, { useState, useRef, useContext } from "react";
 import { useLocation } from "react-router-dom";
 import CountdownComp from "./CountdownComp";
-import { collection, doc, updateDoc } from "firebase/firestore/lite";
+import { doc, updateDoc } from "firebase/firestore/lite";
 import { async } from "@firebase/util";
 import db from "../firebase";
 import { AuthContext } from "../Context/AuthContext";
@@ -35,37 +35,34 @@ export default function DetailComp() {
   };
   return (
     <>
-      <div class="row container">
-        <div class="col mt-5 ">
-          <img
-            src={product.product_image}
-            width="600"
-            height="500"
-            class="rounded-4"
-          />
-        </div>
-        <div class="col mt-5">
-          <h3>{product.product_name}</h3>
-          <h4>
-            Current Bid:{bidprice} ({bidderr})
-          </h4>
-          <h4>
-            Time remaining:
-            <CountdownComp days={product.product_time} />
-          </h4>
-          <p>{product.product_description}</p>
-          <p>
-            <input
-              type="number"
-              class="form-control form-control-lg"
-              ref={bidRef}
-            />
-          </p>
-          <p>
-            <a class="btn" onClick={updateProduct}>
-              Place Bid
-            </a>
-          </p>
+      <div class="container-lg">
+        <div class="row">
+          <div class="col mt-5 ">
+            <img src={product.product_image} class="rounded-4" />
+          </div>
+          <div class="col mt-5">
+            <h3>{product.product_name}</h3>
+            <h4>
+              Current Bid:{bidprice} ({bidderr})
+            </h4>
+            <h4>
+              Time remaining:
+              <CountdownComp days={product.product_time} />
+            </h4>
+            <p>{product.product_description}</p>
+            <p>
+              <input
+                type="number"
+                class="form-control form-control-lg"
+                ref={bidRef}
+              />
+            </p>
+            <p>
+              <a class="btn" onClick={updateProduct}>
+                Place Bid
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </>
