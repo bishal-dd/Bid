@@ -33,7 +33,7 @@ export default function LoginComp({ history }) {
       </div>
       <form autoComplete="off" onSubmit={handleSignin}>
         <div
-          class="container-lg w-50 justify-content-center border border-3 border-dark rounded-5 "
+          class="container-lg w-75 justify-content-center border border-3 border-dark rounded-5 "
           id="box"
         >
           <div class="row d-flex justify-content-center mt-5">

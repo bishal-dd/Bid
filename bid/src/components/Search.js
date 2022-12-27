@@ -38,7 +38,7 @@ export default function Search() {
                   <h5 class="card-title">{pro.product_name}</h5>
                   <h6 class="card-title">Start:Nu.{pro.product_price}</h6>
                   <Link
-                    to={`detail/ ${pro.product_id}`}
+                    to={`/detail/ ${pro.product_id}`}
                     class="btn"
                     state={pro}
                   >
