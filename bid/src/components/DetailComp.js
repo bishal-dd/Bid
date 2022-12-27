@@ -34,17 +34,16 @@ export default function DetailComp() {
   };
   return (
     <>
-      <div class="container">
+      <div class="container mt-5">
         <div class="row">
-          <div class="col mt-5 ">
+          <div class="col-sm">
             <img
               src={product.product_image}
               class="img-fluid  rounded-4 "
               alt={product.product_name}
-              id="detailimg"
             />
           </div>
-          <div class="col mt-5">
+          <div class="col-sm">
             <h3>{product.product_name}</h3>
             <h4>
               Current Bid:{bidprice} ({bidderr})
