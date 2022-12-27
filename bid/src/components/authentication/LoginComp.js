@@ -33,7 +33,7 @@ export default function LoginComp({ history }) {
       </div>
       <form autoComplete="off" onSubmit={handleSignin}>
         <div
-          class="container-lg w-75 justify-content-center border border-3 border-dark rounded-5 "
+          class="container-lg w-50 justify-content-center border border-3 border-dark rounded-5 "
           id="box"
         >
           <div class="row d-flex justify-content-center mt-5">
@@ -88,21 +88,6 @@ export default function LoginComp({ history }) {
           <button type="submit" class="btn btn-light" id="loglink">
             Login
           </button>
-        </div>
-        <div class="p-3 text-center">
-          <div class="row">
-            <div class="col">
-              Or Login Using:
-              <a href="#">
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2048px-Google_%22G%22_Logo.svg.png"
-                  width="40"
-                  height="40"
-                  class="iconsf"
-                />
-              </a>
-            </div>
-          </div>
         </div>
       </form>
     </>
