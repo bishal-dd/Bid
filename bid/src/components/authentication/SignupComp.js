@@ -26,11 +26,14 @@ export default function SignupComp({ history }) {
   return (
     <>
       <div>
-        <form autoComplete="off">
+        <form autoComplete="off" onSubmit={handleSignUp}>
           <div class="p-3">
             <p class="h1 text-center">Signup</p>
           </div>
-          <div class="container justify-content-center  rounded-5" id="box1">
+          <div
+            class="container w-50 justify-content-center  rounded-5"
+            id="box1"
+          >
             <div class="row" id="dechen">
               <div class="col">
                 <p class="h2">Name</p>
@@ -79,14 +82,9 @@ export default function SignupComp({ history }) {
           </div>
 
           <div class="p-3 text-center">
-            <a
-              href=""
-              class="btn btn-light"
-              id="loglink"
-              onClick={handleSignUp}
-            >
+            <button type="submit" class="btn btn-light" id="loglink">
               Signup
-            </a>
+            </button>
           </div>
         </form>
       </div>
