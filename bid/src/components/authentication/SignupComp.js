@@ -39,7 +39,7 @@ export default function SignupComp({ history }) {
                 <p class="h2">Name</p>
               </div>
               <div class="col">
-                <input type="text" class="additemtexbox" required />
+                <input type="text" class="w-75 h-75" required />
               </div>
             </div>
 
@@ -51,7 +51,7 @@ export default function SignupComp({ history }) {
                 <input
                   type="email"
                   name="email"
-                  class="additemtexbox"
+                  class="w-75 h-75"
                   ref={emailRef}
                   required
                 />
@@ -62,7 +62,7 @@ export default function SignupComp({ history }) {
                 <p class="h2">Password</p>
               </div>
               <div class="col">
-                <input type="password" class="additemtexbox" required />
+                <input type="password" class="w-75 h-75" required />
               </div>
             </div>
             <div class="row" id="dechen3">
@@ -73,7 +73,7 @@ export default function SignupComp({ history }) {
                 <input
                   type="password"
                   name="password"
-                  class="additemtexbox"
+                  class="w-75 h-75"
                   ref={passwordRef}
                   required
                 />

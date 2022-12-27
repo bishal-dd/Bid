@@ -110,7 +110,7 @@ export default function AdditemComp() {
                 <input
                   type="text"
                   name="product_name"
-                  class="additemtexbox"
+                  class="w-75 h-75"
                   value={values.product_name}
                   onChange={handelchange}
                   required
@@ -124,7 +124,7 @@ export default function AdditemComp() {
               <div class="col">
                 <input
                   type="file"
-                  class="additemtexbox"
+                  class="w-75 h-75"
                   name="product_image"
                   id="file"
                   required
@@ -139,7 +139,7 @@ export default function AdditemComp() {
               <div class="col">
                 <input
                   type="text"
-                  class="additemtexbox"
+                  class="w-75 h-75"
                   onChange={handelchange}
                   name="product_price"
                   required
@@ -153,7 +153,7 @@ export default function AdditemComp() {
               <div class="col">
                 <input
                   type="number"
-                  class="additemtexbox"
+                  class="w-75 h-75"
                   value={values.product_time}
                   onChange={handelchange}
                   name="product_time"
@@ -168,8 +168,7 @@ export default function AdditemComp() {
               </div>
               <div class="col">
                 <textarea
-                  cols="30"
-                  rows="5"
+                  class="w-75 h-100"
                   value={values.product_description}
                   onChange={handelchange}
                   name="product_description"
