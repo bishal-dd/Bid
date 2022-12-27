@@ -70,3 +70,7 @@ a {
 #for1 {
   color: black;
 }
+#detailimg {
+  max-width: 100%;
+  height: auto;
+}

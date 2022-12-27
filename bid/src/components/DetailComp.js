@@ -34,13 +34,14 @@ export default function DetailComp() {
   };
   return (
     <>
-      <div class="container-lg">
+      <div class="container">
         <div class="row">
           <div class="col mt-5 ">
             <img
               src={product.product_image}
-              class="rounded-4"
+              class="img-fluid  rounded-4 "
               alt={product.product_name}
+              id="detailimg"
             />
           </div>
           <div class="col mt-5">
