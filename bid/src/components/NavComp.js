@@ -1,7 +1,6 @@
-import { async } from "@firebase/util";
 import { signOut } from "firebase/auth";
-import React, { useContext, useRef, useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContext";
 import { auth } from "../firebase";
 
@@ -33,14 +32,13 @@ export default function NavComp() {
           >
             <span class="navbar-toggler-icon"></span>
           </button>
-          <a class="navbar-brand rounded-5" href="#">
-            <img
-              src="https://t4.ftcdn.net/jpg/04/83/17/69/360_F_483176994_Mvj1b9H2sKpq9T1xzoJy6CreJT7leHBL.jpg"
-              width="50"
-              class="rounded-2"
-              height="40"
-            />
-          </a>
+          <img
+            src="https://t4.ftcdn.net/jpg/04/83/17/69/360_F_483176994_Mvj1b9H2sKpq9T1xzoJy6CreJT7leHBL.jpg"
+            width="50"
+            class="rounded-2"
+            height="40"
+          />
+
           <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">

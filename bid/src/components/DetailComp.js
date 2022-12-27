@@ -2,7 +2,6 @@ import React, { useState, useRef, useContext } from "react";
 import { useLocation } from "react-router-dom";
 import CountdownComp from "./CountdownComp";
 import { doc, updateDoc } from "firebase/firestore/lite";
-import { async } from "@firebase/util";
 import db from "../firebase";
 import { AuthContext } from "../Context/AuthContext";
 
@@ -38,7 +37,11 @@ export default function DetailComp() {
       <div class="container-lg">
         <div class="row">
           <div class="col mt-5 ">
-            <img src={product.product_image} class="rounded-4" />
+            <img
+              src={product.product_image}
+              class="rounded-4"
+              alt={product.product_name}
+            />
           </div>
           <div class="col mt-5">
             <h3>{product.product_name}</h3>
