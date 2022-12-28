@@ -11,6 +11,8 @@ import AdditemComp from "./components/AdditemComp";
 import Search from "./components/Search";
 import LoadingScreen from "react-loading-screen";
 import { useEffect, useState } from "react";
+import ForgotPassword from "./components/ForgotPassword";
+import Updateitem from "./components/Updateitem";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -43,6 +45,8 @@ function App() {
             <Route path="/detail/:id" element={<DetailComp />} />
             <Route path="/add" element={<AdditemComp />} />
             <Route path="/search/:id" element={<Search />} />
+            <Route path="/forgotpassword" element={<ForgotPassword />} />
+            <Route path="/edit" element={<Updateitem />} />
           </Routes>
         </BrowserRouter>
       </AuthProvider>

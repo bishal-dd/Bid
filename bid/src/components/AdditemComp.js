@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import db, { storage } from "../firebase";
 import { collection, addDoc, updateDoc, doc } from "firebase/firestore/lite";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { AuthContext } from "../Context/AuthContext";
 
 export default function AdditemComp() {
+  const { currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const [productImg, setProductImg] = useState(null);
   const [error, setError] = useState("");
@@ -69,6 +71,7 @@ export default function AdditemComp() {
         product_image: url,
         product_time: finalDate,
         product_description: values.product_description[0],
+        product_owner: currentUser.email,
       }).then(async (getid) => {
         await updateDoc(doc(db, "Products", getid.id), {
           product_id: getid.id,
@@ -138,7 +141,7 @@ export default function AdditemComp() {
               </div>
               <div class="col-sm">
                 <input
-                  type="text"
+                  type="number"
                   class="w-75 h-75"
                   onChange={handelchange}
                   name="product_price"

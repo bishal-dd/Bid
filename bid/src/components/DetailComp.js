@@ -19,17 +19,24 @@ export default function DetailComp() {
 
     if (currentUser) {
       if (Number(bidRef.current.value) > Number(bidprice)) {
-        setbidprice(bidRef.current.value);
-        setbidder(currentUser.email);
-        const productRef = doc(db, "Products", product.product_id);
+        console.log(product.product_owner);
+        console.log(currentUser.email);
 
-        console.log(bidRef.current.value);
-        console.log(productRef);
+        if (product.product_owner == currentUser.email) {
+          alert("you cannot bid on you own product");
+        } else {
+          setbidprice(bidRef.current.value);
+          setbidder(currentUser.email);
+          const productRef = doc(db, "Products", product.product_id);
 
-        await updateDoc(productRef, {
-          product_price: bidRef.current.value,
-          bidder: currentUser.email,
-        });
+          console.log(bidRef.current.value);
+          console.log(productRef);
+
+          await updateDoc(productRef, {
+            product_price: bidRef.current.value,
+            bidder: currentUser.email,
+          });
+        }
       } else {
         alert("Enter a bid that is higher than the current bid");
       }

@@ -12,8 +12,6 @@ export default function Search() {
       setproductList(a);
     });
   }, []);
-  console.log(...id);
-  console.log(productList);
 
   return (
     <>

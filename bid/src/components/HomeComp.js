@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useNavigation } from "react-router-dom";
 import db, { getProducts } from "../firebase";
 import { NumericFormat } from "react-number-format";
+import { AuthContext } from "../Context/AuthContext";
 
 export default function HomeComp() {
+  const { currentUser } = useContext(AuthContext);
+
   const [productList, setproductList] = useState([]);
 
   useEffect(() => {
@@ -45,6 +48,16 @@ export default function HomeComp() {
                 >
                   Place Bid
                 </Link>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {currentUser.email == products.product_owner ? (
+                  <span class="ml-3">
+                    <Link to="/edit" state={products} class="btn">
+                      Edit
+                    </Link>
+                  </span>
+                ) : (
+                  <span></span>
+                )}
               </div>
             </div>
           </div>
