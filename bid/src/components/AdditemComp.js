@@ -99,7 +99,7 @@ export default function AdditemComp() {
             <p class="h1 text-center">Auction</p>
           </div>
           <div
-            class="container w-50 justify-content-center  rounded-5"
+            class="container w-75 justify-content-center  rounded-5"
             id="box1"
           >
             <div class="row" id="dechen">
