@@ -72,6 +72,11 @@ export default function LoginComp({ history }) {
           <div class="container-xxl overflow-hidden">
             <div class="row gx-5">
               <div class="col mb-3">
+                <a href="#" id="for">
+                  Forgot password?
+                </a>
+              </div>
+              <div class="col ml-5 mb-3">
                 <Link to="/signup" id="for1">
                   Signup?
                 </Link>

@@ -35,19 +35,19 @@ export default function SignupComp({ history }) {
             id="box1"
           >
             <div class="row" id="dechen">
-              <div class="col">
+              <div class="col-sm">
                 <p class="h2">Name</p>
               </div>
-              <div class="col">
+              <div class="col-sm">
                 <input type="text" class="w-75 h-75" required />
               </div>
             </div>
 
             <div class="row" id="dechen2">
-              <div class="col">
+              <div class="col-sm">
                 <p class="h2">Email</p>
               </div>
-              <div class="col">
+              <div class="col-sm">
                 <input
                   type="email"
                   name="email"
@@ -58,18 +58,18 @@ export default function SignupComp({ history }) {
               </div>
             </div>
             <div class="row" id="dechen3">
-              <div class="col">
+              <div class="col-sm">
                 <p class="h2">Password</p>
               </div>
-              <div class="col">
+              <div class="col-sm">
                 <input type="password" class="w-75 h-75" required />
               </div>
             </div>
             <div class="row" id="dechen3">
-              <div class="col">
+              <div class="col-sm">
                 <p class="h2">Confirm Password</p>
               </div>
-              <div class="col">
+              <div class="col-sm">
                 <input
                   type="password"
                   name="password"

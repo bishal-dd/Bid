@@ -103,10 +103,10 @@ export default function AdditemComp() {
             id="box1"
           >
             <div class="row" id="dechen">
-              <div class="col">
+              <div class="col-sm">
                 <p class="h2">Enter Product</p>
               </div>
-              <div class="col">
+              <div class="col-sm">
                 <input
                   type="text"
                   name="product_name"
@@ -118,10 +118,10 @@ export default function AdditemComp() {
               </div>
             </div>
             <div class="row" id="dechen1">
-              <div class="col">
+              <div class="col-sm">
                 <p class="h2">Insert Image</p>
               </div>
-              <div class="col">
+              <div class="col-sm">
                 <input
                   type="file"
                   class="w-75 h-75"
@@ -133,10 +133,10 @@ export default function AdditemComp() {
               </div>
             </div>
             <div class="row" id="dechen2">
-              <div class="col">
+              <div class="col-sm">
                 <p class="h2">Enter Price</p>
               </div>
-              <div class="col">
+              <div class="col-sm">
                 <input
                   type="text"
                   class="w-75 h-75"
@@ -147,10 +147,10 @@ export default function AdditemComp() {
               </div>
             </div>
             <div class="row" id="dechen3">
-              <div class="col">
+              <div class="col-sm">
                 <p class="h2">Days Available</p>
               </div>
-              <div class="col">
+              <div class="col-sm">
                 <input
                   type="number"
                   class="w-75 h-75"
@@ -163,10 +163,10 @@ export default function AdditemComp() {
               </div>
             </div>
             <div class="row" id="dechen4">
-              <div class="col">
+              <div class="col-sm">
                 <p class="h2">Description</p>
               </div>
-              <div class="col">
+              <div class="col-sm">
                 <textarea
                   class="w-75 h-100"
                   value={values.product_description}
