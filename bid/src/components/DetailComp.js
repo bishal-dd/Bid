@@ -50,7 +50,7 @@ export default function DetailComp() {
           </div>
           <div class="col-lg p-3 border border-4 " id="detailcol">
             <h3>{product.product_name}</h3>
-            <h4>
+            <div class="h4">
               Current Bid:{" "}
               <NumericFormat
                 value={bidprice}
@@ -59,7 +59,7 @@ export default function DetailComp() {
                 prefix={"Nu."}
               />
               ({bidderr})
-            </h4>
+            </div>
             <h4>
               <CountdownComp days={product.product_time} />
             </h4>
