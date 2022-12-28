@@ -64,18 +64,19 @@ export default function DetailComp() {
               <CountdownComp days={product.product_time} />
             </h4>
             <p>{product.product_description}</p>
-            <p>
-              <input
-                type="number"
-                class="form-control form-control-lg"
-                ref={bidRef}
-              />
-            </p>
-            <p>
-              <a class="btn" onClick={updateProduct}>
-                Place Bid
-              </a>
-            </p>
+            <form onSubmit={updateProduct}>
+              <p>
+                <input
+                  type="number"
+                  class="form-control form-control-lg"
+                  ref={bidRef}
+                  required
+                />
+              </p>
+              <p>
+                <button class="btn">Place Bid</button>
+              </p>
+            </form>
           </div>
         </div>
       </div>
