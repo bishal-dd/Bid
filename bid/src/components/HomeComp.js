@@ -49,15 +49,16 @@ export default function HomeComp() {
                   Place Bid
                 </Link>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                {currentUser.email == products.product_owner ? (
-                  <span class="ml-3">
+                <span class="ml-3">
+                  {currentUser &&
+                  currentUser.email === products.product_owner ? (
                     <Link to="/edit" state={products} class="btn">
                       Edit
                     </Link>
-                  </span>
-                ) : (
-                  <span></span>
-                )}
+                  ) : (
+                    ""
+                  )}
+                </span>
               </div>
             </div>
           </div>
