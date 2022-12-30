@@ -7,6 +7,8 @@ export default function Search() {
   const { id } = useParams();
   const [productList, setproductList] = useState([]);
 
+  console.log(id);
+
   useEffect(() => {
     getProducts(db).then((a) => {
       setproductList(a);
@@ -18,7 +20,7 @@ export default function Search() {
       <div class="row mt-4" id="mainrow">
         {productList
           .filter((products) =>
-            products.product_name.toLowerCase().includes(id.toLowerCase())
+            products.product_name.includes(id.toLowerCase())
           )
           .map((pro) => (
             <div class="col">

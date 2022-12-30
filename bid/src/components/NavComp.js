@@ -17,6 +17,12 @@ export default function NavComp() {
     });
   };
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    navigate(`/search/${searchitem}`);
+  };
+
   return (
     <>
       <nav class="navbar navbar-fixed-top navbar-expand-xl " id="navbar">
@@ -96,7 +102,7 @@ export default function NavComp() {
                 )}
               </ul>
             </div>
-            <form class="d-flex" role="search">
+            <form class="d-flex" role="search" onSubmit={onSubmit}>
               <input
                 class="form-control me-2"
                 type="search"
@@ -105,15 +111,15 @@ export default function NavComp() {
                 onChange={(e) => {
                   setsearchitem(e.target.value);
                 }}
+                required
               />
-              <Link
+              <button
                 class="btn btn-outline-dark"
                 type="submit"
                 id="searchbutton"
-                to={`/search/${searchitem}`}
               >
                 Search
-              </Link>
+              </button>
             </form>
           </div>
         </div>

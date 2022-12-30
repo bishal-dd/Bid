@@ -16,29 +16,34 @@ export default function DetailComp() {
 
   const updateProduct = async (e) => {
     e.preventDefault();
-
+    const countdown = document.getElementById("countdown1");
+    console.log(countdown.textContent);
     if (currentUser) {
-      if (Number(bidRef.current.value) > Number(bidprice)) {
-        console.log(product.product_owner);
-        console.log(currentUser.email);
-
-        if (product.product_owner == currentUser.email) {
-          alert("you cannot bid on you own product");
-        } else {
-          setbidprice(bidRef.current.value);
-          setbidder(currentUser.email);
-          const productRef = doc(db, "Products", product.product_id);
-
-          console.log(bidRef.current.value);
-          console.log(productRef);
-
-          await updateDoc(productRef, {
-            product_price: bidRef.current.value,
-            bidder: currentUser.email,
-          });
-        }
+      if (countdown.textContent === "Time is up 🔥") {
+        alert("the time is up");
       } else {
-        alert("Enter a bid that is higher than the current bid");
+        if (Number(bidRef.current.value) > Number(bidprice)) {
+          console.log(product.product_owner);
+          console.log(currentUser.email);
+
+          if (product.product_owner == currentUser.email) {
+            alert("you cannot bid on you own product");
+          } else {
+            setbidprice(bidRef.current.value);
+            setbidder(currentUser.email);
+            const productRef = doc(db, "Products", product.product_id);
+
+            console.log(bidRef.current.value);
+            console.log(productRef);
+
+            await updateDoc(productRef, {
+              product_price: bidRef.current.value,
+              bidder: currentUser.email,
+            });
+          }
+        } else {
+          alert("Enter a bid that is higher than the current bid");
+        }
       }
     } else {
       alert("Please login to place a Bid");
@@ -68,7 +73,9 @@ export default function DetailComp() {
               ({bidderr})
             </div>
             <h4>
-              <CountdownComp days={product.product_time} />
+              <span id="countdown1">
+                <CountdownComp days={product.product_time} />
+              </span>
             </h4>
             <p>{product.product_description}</p>
             <form onSubmit={updateProduct}>
