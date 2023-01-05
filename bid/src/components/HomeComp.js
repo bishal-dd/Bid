@@ -17,50 +17,52 @@ export default function HomeComp() {
 
   return (
     <>
-      <div class="row mt-4" id="mainrow">
-        {productList.map((products) => (
-          <div class="col mt-5">
-            <div class="card">
-              <img
-                src={products.product_image}
-                class="img-fluid w-100 h-100 card-img-top"
-                height="200"
-                alt="..."
-              />
+      <div class="container-xxl">
+        <div class="row mt-4" id="mainrow">
+          {productList.map((products) => (
+            <div class="col mt-5">
+              <div class="card">
+                <img
+                  src={products.product_image}
+                  class="img-fluid w-100 h-100 card-img-top"
+                  height="200"
+                  alt="..."
+                />
 
-              <div class="card-body">
-                <h5 class="card-title">{products.product_name}</h5>
-                <h6 class="card-title">
-                  Current Price:&nbsp;&nbsp;
-                  <NumericFormat
-                    value={products.product_price}
-                    displayType={"text"}
-                    thousandSeparator={true}
-                    prefix={"Nu."}
-                  />
-                </h6>
-                <Link
-                  to={`detail/ ${products.product_id}`}
-                  class="btn"
-                  state={products}
-                >
-                  Place Bid
-                </Link>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span class="ml-3">
-                  {currentUser &&
-                  currentUser.email === products.product_owner ? (
-                    <Link to="/edit" state={products} class="btn">
-                      Edit
-                    </Link>
-                  ) : (
-                    ""
-                  )}
-                </span>
+                <div class="card-body">
+                  <h5 class="card-title">{products.product_name}</h5>
+                  <h6 class="card-title">
+                    Current Price:&nbsp;&nbsp;
+                    <NumericFormat
+                      value={products.product_price}
+                      displayType={"text"}
+                      thousandSeparator={true}
+                      prefix={"Nu."}
+                    />
+                  </h6>
+                  <Link
+                    to={`detail/ ${products.product_id}`}
+                    class="btn"
+                    state={products}
+                  >
+                    Place Bid
+                  </Link>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <span class="ml-3">
+                    {currentUser &&
+                    currentUser.email === products.product_owner ? (
+                      <Link to="/edit" state={products} class="btn">
+                        Edit
+                      </Link>
+                    ) : (
+                      ""
+                    )}
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </>
   );
