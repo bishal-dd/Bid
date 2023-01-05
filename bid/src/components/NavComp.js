@@ -43,6 +43,7 @@ export default function NavComp() {
             width="50"
             class="rounded-2"
             height="40"
+            alt="logo"
           />
 
           <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
@@ -75,6 +76,7 @@ export default function NavComp() {
                         class="nav-link active rounded-5"
                         aria-current="page"
                         onClick={handelsignout}
+                        href="#"
                       >
                         Login out
                       </a>

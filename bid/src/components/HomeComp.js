@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, NavLink, useNavigation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import db, { getProducts } from "../firebase";
 import { NumericFormat } from "react-number-format";
 import { AuthContext } from "../Context/AuthContext";
@@ -21,14 +21,12 @@ export default function HomeComp() {
         {productList.map((products) => (
           <div class="col mt-5">
             <div class="card">
-              <a to="/detail">
-                <img
-                  src={products.product_image}
-                  class="img-fluid w-100 h-100 card-img-top"
-                  height="200"
-                  alt="..."
-                />
-              </a>
+              <img
+                src={products.product_image}
+                class="img-fluid w-100 h-100 card-img-top"
+                height="200"
+                alt="..."
+              />
 
               <div class="card-body">
                 <h5 class="card-title">{products.product_name}</h5>

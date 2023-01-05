@@ -19,20 +19,16 @@ export default function Search() {
     <>
       <div class="row mt-4" id="mainrow">
         {productList
-          .filter((products) =>
-            products.product_name.includes(id.toLowerCase())
-          )
+          .filter((products) => products.product_name.includes(id))
           .map((pro) => (
             <div class="col">
               <div class="card">
-                <a to="/detail">
-                  <img
-                    src={pro.product_image}
-                    class="card-img-top"
-                    height="200"
-                    alt="..."
-                  />
-                </a>
+                <img
+                  src={pro.product_image}
+                  class="card-img-top"
+                  height="200"
+                  alt="..."
+                />
 
                 <div class="card-body">
                   <h5 class="card-title">{pro.product_name}</h5>
