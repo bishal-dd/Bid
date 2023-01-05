@@ -71,6 +71,7 @@ export default function Updateitem() {
                   class="w-75 h-75"
                   value={values.product_name}
                   onChange={handelchange}
+                  placeholder={products.product_name}
                 />
               </div>
             </div>
@@ -85,6 +86,7 @@ export default function Updateitem() {
                   value={values.product_description}
                   onChange={handelchange}
                   name="product_description"
+                  placeholder={products.product_description}
                 ></textarea>
               </div>
             </div>

@@ -26,7 +26,7 @@ export default function DetailComp() {
           console.log(product.product_owner);
           console.log(currentUser.email);
 
-          if (product.product_owner == currentUser.email) {
+          if (product.product_owner === currentUser.email) {
             alert("you cannot bid on you own product");
           } else {
             setbidprice(bidRef.current.value);
