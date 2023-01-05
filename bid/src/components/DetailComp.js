@@ -1,7 +1,7 @@
 import React, { useState, useRef, useContext } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import CountdownComp from "./CountdownComp";
-import { doc, updateDoc } from "firebase/firestore/lite";
+import { deleteDoc, doc, updateDoc } from "firebase/firestore/lite";
 import db from "../firebase";
 import { AuthContext } from "../Context/AuthContext";
 import { NumericFormat } from "react-number-format";
@@ -9,6 +9,7 @@ import { NumericFormat } from "react-number-format";
 export default function DetailComp() {
   const { currentUser } = useContext(AuthContext);
   const locate = useLocation();
+  const navigate = useNavigate();
   const product = locate.state;
   const [bidprice, setbidprice] = useState(product.product_price);
   const [bidderr, setbidder] = useState(product.bidder);
@@ -48,6 +49,12 @@ export default function DetailComp() {
     } else {
       alert("Please login to place a Bid");
     }
+  };
+  const DeleteProduct = async (e) => {
+    e.preventDefault();
+    await deleteDoc(doc(db, "Products", product.product_id));
+
+    navigate("/");
   };
   return (
     <>
@@ -90,6 +97,15 @@ export default function DetailComp() {
               <p>
                 <button class="btn">Place Bid</button>
               </p>
+              <span class="ml-3">
+                {currentUser && currentUser.email === product.product_owner ? (
+                  <button class="btn" onClick={DeleteProduct}>
+                    Delete
+                  </button>
+                ) : (
+                  ""
+                )}
+              </span>
             </form>
           </div>
         </div>
