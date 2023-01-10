@@ -25,7 +25,7 @@ export default function NavComp() {
 
   return (
     <>
-      <nav class="navbar navbar-fixed-top navbar-expand-xl " id="navbar">
+      <nav class="navbar fixed-top navbar-expand-xl " id="navbar">
         <div class="container-fluid">
           <button
             class="navbar-toggler"
