@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import db from "../firebase";
 import { updateDoc, doc } from "firebase/firestore/lite";
@@ -7,38 +7,28 @@ export default function Updateitem() {
   const navigate = useNavigate();
   const locate = useLocation();
   const products = locate.state;
-
-  const [values, setValues] = useState({
-    product_name: "",
-    product_description: "",
-  });
-
-  const handelchange = (e) => {
-    setValues({
-      ...values,
-      [e.currentTarget.name]: [e.currentTarget.value],
-    });
-  };
+  const product_nameRef = useRef("");
+  const product_descriptionRef = useRef("");
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    const productname = product_nameRef.current.value;
+    const productdescription = product_descriptionRef.current.value;
+    console.log(productname);
 
     try {
-      if (values.product_name !== "" && values.product_description !== "") {
+      if (productname !== "" && productdescription !== "") {
         await updateDoc(doc(db, "Products", products.product_id), {
-          product_name: values.product_name,
-          product_description: values.product_description,
+          product_name: productname,
+          product_description: productdescription,
         });
-      } else if (
-        values.product_name !== "" &&
-        values.product_description === ""
-      ) {
+      } else if (productname !== "" && productdescription === "") {
         await updateDoc(doc(db, "Products", products.product_id), {
-          product_name: values.product_name,
+          product_name: productname,
         });
       } else {
         await updateDoc(doc(db, "Products", products.product_id), {
-          product_description: values.product_description,
+          product_description: productdescription,
         });
       }
 
@@ -69,9 +59,8 @@ export default function Updateitem() {
                   type="text"
                   name="product_name"
                   class="w-75 h-75"
-                  value={values.product_name}
-                  onChange={handelchange}
-                  placeholder={products.product_name}
+                  defaultValue={products.product_name}
+                  ref={product_nameRef}
                 />
               </div>
             </div>
@@ -83,10 +72,9 @@ export default function Updateitem() {
               <div class="col-sm">
                 <textarea
                   class="w-75 h-100"
-                  value={values.product_description}
-                  onChange={handelchange}
+                  defaultValue={products.product_description}
                   name="product_description"
-                  placeholder={products.product_description}
+                  ref={product_descriptionRef}
                 ></textarea>
               </div>
             </div>
