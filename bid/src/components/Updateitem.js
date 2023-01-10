@@ -14,7 +14,6 @@ export default function Updateitem() {
     e.preventDefault();
     const productname = product_nameRef.current.value;
     const productdescription = product_descriptionRef.current.value;
-    console.log(productname);
 
     try {
       if (productname !== "" && productdescription !== "") {
@@ -58,7 +57,7 @@ export default function Updateitem() {
                 <input
                   type="text"
                   name="product_name"
-                  class="w-75 h-75"
+                  class="w-75 h-75 border border-dark"
                   defaultValue={products.product_name}
                   ref={product_nameRef}
                 />
@@ -71,7 +70,7 @@ export default function Updateitem() {
               </div>
               <div class="col-sm">
                 <textarea
-                  class="w-75 h-100"
+                  class="w-75 h-100 border border-dark"
                   defaultValue={products.product_description}
                   name="product_description"
                   ref={product_descriptionRef}
