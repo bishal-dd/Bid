@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext } from "react";
+import React, { useState, useRef, useContext, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import CountdownComp from "./CountdownComp";
 import { deleteDoc, doc, updateDoc } from "firebase/firestore/lite";
@@ -11,40 +11,47 @@ export default function DetailComp() {
   const locate = useLocation();
   const navigate = useNavigate();
   const product = locate.state;
+  const [Timeupfunction, setTimeupfunction] = useState(false);
   const [bidprice, setbidprice] = useState(product.product_price);
   const [bidderr, setbidder] = useState(product.bidder);
   const bidRef = useRef();
 
-  const updateProduct = async (e) => {
-    e.preventDefault();
+  useEffect(() => {
     const countdown = document.getElementById("countdown1");
     console.log(countdown.textContent);
+
+    if (countdown.textContent === "Time is up 🔥") {
+      setTimeupfunction(true);
+    } else {
+      setTimeupfunction(false);
+    }
+  }, []);
+
+  const updateProduct = async (e) => {
+    e.preventDefault();
+
     if (currentUser) {
-      if (countdown.textContent === "Time is up 🔥") {
-        alert("the time is up");
-      } else {
-        if (Number(bidRef.current.value) > Number(bidprice)) {
-          console.log(product.product_owner);
-          console.log(currentUser.email);
+      if (Number(bidRef.current.value) > Number(bidprice)) {
+        console.log(product.product_owner);
+        console.log(currentUser.email);
 
-          if (product.product_owner === currentUser.email) {
-            alert("you cannot bid on you own product");
-          } else {
-            setbidprice(bidRef.current.value);
-            setbidder(currentUser.email);
-            const productRef = doc(db, "Products", product.product_id);
-
-            console.log(bidRef.current.value);
-            console.log(productRef);
-
-            await updateDoc(productRef, {
-              product_price: bidRef.current.value,
-              bidder: currentUser.email,
-            });
-          }
+        if (product.product_owner === currentUser.email) {
+          alert("you cannot bid on you own product");
         } else {
-          alert("Enter a bid that is higher than the current bid");
+          setbidprice(bidRef.current.value);
+          setbidder(currentUser.email);
+          const productRef = doc(db, "Products", product.product_id);
+
+          console.log(bidRef.current.value);
+          console.log(productRef);
+
+          await updateDoc(productRef, {
+            product_price: bidRef.current.value,
+            bidder: currentUser.email,
+          });
         }
+      } else {
+        alert("Enter a bid that is higher than the current bid");
       }
     } else {
       alert("Please login to place a Bid");
@@ -92,10 +99,13 @@ export default function DetailComp() {
                   class="form-control form-control-lg"
                   ref={bidRef}
                   required
+                  disabled={Timeupfunction}
                 />
               </p>
               <p>
-                <button class="btn">Place Bid</button>
+                <button class="btn" disabled={Timeupfunction}>
+                  Place Bid
+                </button>
               </p>
               <span class="ml-3">
                 {currentUser && currentUser.email === product.product_owner ? (

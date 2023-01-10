@@ -37,7 +37,7 @@ export default function ForgotPassword() {
               required
               ref={emailRef}
               size="50"
-              class="border border-color-dark"
+              class="border border-dark"
             />
           </span>
         </div>
