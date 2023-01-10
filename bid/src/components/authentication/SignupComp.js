@@ -31,7 +31,7 @@ export default function SignupComp({ history }) {
             <p class="h1 text-center">Signup</p>
           </div>
           <div
-            class="container w-50 justify-content-center  rounded-5"
+            class="container w-50 justify-content-center  rounded-5 "
             id="box1"
           >
             <div class="row" id="dechen">
@@ -39,7 +39,11 @@ export default function SignupComp({ history }) {
                 <p class="h2">Name</p>
               </div>
               <div class="col-sm">
-                <input type="text" class="w-75 h-75" required />
+                <input
+                  type="text"
+                  class="w-75 h-75 border border-dark"
+                  required
+                />
               </div>
             </div>
 
@@ -51,7 +55,7 @@ export default function SignupComp({ history }) {
                 <input
                   type="email"
                   name="email"
-                  class="w-75 h-75"
+                  class="w-75 h-75 border border-dark"
                   ref={emailRef}
                   required
                 />
@@ -62,7 +66,11 @@ export default function SignupComp({ history }) {
                 <p class="h2">Password</p>
               </div>
               <div class="col-sm">
-                <input type="password" class="w-75 h-75" required />
+                <input
+                  type="password"
+                  class="w-75 h-75 border border-dark"
+                  required
+                />
               </div>
             </div>
             <div class="row" id="dechen3">
@@ -73,7 +81,7 @@ export default function SignupComp({ history }) {
                 <input
                   type="password"
                   name="password"
-                  class="w-75 h-75"
+                  class="w-75 h-75 border border-dark"
                   ref={passwordRef}
                   required
                 />

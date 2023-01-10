@@ -113,7 +113,7 @@ export default function AdditemComp() {
                 <input
                   type="text"
                   name="product_name"
-                  class="w-75 h-75"
+                  class="w-75 h-75 border border-dark"
                   value={values.product_name}
                   onChange={handelchange}
                   required
@@ -142,7 +142,7 @@ export default function AdditemComp() {
               <div class="col-sm">
                 <input
                   type="number"
-                  class="w-75 h-75"
+                  class="w-75 h-75 border border-dark"
                   onChange={handelchange}
                   name="product_price"
                   required
@@ -156,7 +156,7 @@ export default function AdditemComp() {
               <div class="col-sm">
                 <input
                   type="number"
-                  class="w-75 h-75"
+                  class="w-75 h-75 border border-dark"
                   value={values.product_time}
                   onChange={handelchange}
                   name="product_time"
@@ -171,7 +171,7 @@ export default function AdditemComp() {
               </div>
               <div class="col-sm">
                 <textarea
-                  class="w-75 h-100"
+                  class="w-75 h-100 border border-dark"
                   value={values.product_description}
                   onChange={handelchange}
                   name="product_description"

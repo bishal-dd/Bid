@@ -24,7 +24,7 @@ export default function ForgotPassword() {
   return (
     <div class="container" id="forgotpasswordcontainer">
       <form onSubmit={Resetpassword}>
-        <div>
+        <div class="row">
           <span>
             <button type="submit" class="btn">
               Reset
