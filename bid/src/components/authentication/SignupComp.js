@@ -26,7 +26,7 @@ export default function SignupComp({ history }) {
         alert("The passwords donot match");
       }
     },
-    [history]
+    [navigate]
   );
   return (
     <>

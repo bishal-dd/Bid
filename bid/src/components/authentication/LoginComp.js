@@ -24,7 +24,7 @@ export default function LoginComp({ history }) {
         alert(error);
       }
     },
-    [history]
+    [navigate]
   );
   return (
     <>
