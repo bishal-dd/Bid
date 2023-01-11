@@ -5,20 +5,25 @@ import { useNavigate } from "react-router-dom";
 export default function SignupComp({ history }) {
   const navigate = useNavigate();
   const emailRef = useRef("");
+  const confirmpasswordRef = useRef("");
   const passwordRef = useRef("");
 
   const handleSignUp = useCallback(
     async (event) => {
       event.preventDefault();
-      try {
-        await createUserWithEmailAndPassword(
-          auth,
-          emailRef.current.value,
-          passwordRef.current.value
-        );
-        navigate("/");
-      } catch (error) {
-        alert(error);
+      if (confirmpasswordRef.current.value === passwordRef.current.value) {
+        try {
+          await createUserWithEmailAndPassword(
+            auth,
+            emailRef.current.value,
+            confirmpasswordRef.current.value
+          );
+          navigate("/");
+        } catch (error) {
+          alert(error);
+        }
+      } else {
+        alert("The passwords donot match");
       }
     },
     [history]
@@ -70,6 +75,7 @@ export default function SignupComp({ history }) {
                   type="password"
                   class="w-75 h-75 border border-dark"
                   required
+                  ref={passwordRef}
                 />
               </div>
             </div>
@@ -82,7 +88,7 @@ export default function SignupComp({ history }) {
                   type="password"
                   name="password"
                   class="w-75 h-75 border border-dark"
-                  ref={passwordRef}
+                  ref={confirmpasswordRef}
                   required
                 />
               </div>

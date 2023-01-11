@@ -12,6 +12,7 @@ export default function DetailComp() {
   const navigate = useNavigate();
   const product = locate.state;
   const [Timeupfunction, setTimeupfunction] = useState(false);
+  const [Contactbuyer, setContactbuyer] = useState("hidden");
   const [bidprice, setbidprice] = useState(product.product_price);
   const [bidderr, setbidder] = useState(product.bidder);
   const bidRef = useRef();
@@ -22,6 +23,7 @@ export default function DetailComp() {
 
     if (countdown.textContent === "Time is up 🔥") {
       setTimeupfunction(true);
+      setContactbuyer("visible");
     } else {
       setTimeupfunction(false);
     }
@@ -102,20 +104,38 @@ export default function DetailComp() {
                   disabled={Timeupfunction}
                 />
               </p>
-              <p>
+              <span>
                 <button class="btn" disabled={Timeupfunction}>
                   Place Bid
                 </button>
-              </p>
-              <span class="ml-3">
-                {currentUser && currentUser.email === product.product_owner ? (
-                  <button class="btn" onClick={DeleteProduct}>
-                    Delete
-                  </button>
-                ) : (
-                  ""
-                )}
               </span>
+              &nbsp;&nbsp;&nbsp;
+              {currentUser && currentUser.email === product.product_owner ? (
+                <>
+                  <span class="ml-5">
+                    <button
+                      class="btn"
+                      onClick={DeleteProduct}
+                      style={{ visibility: Contactbuyer }}
+                    >
+                      Delete
+                    </button>
+                  </span>
+                  &nbsp;&nbsp;&nbsp;
+                  <span>
+                    <a
+                      href={`mailto: ${bidderr}`}
+                      class="btn"
+                      style={{ visibility: Contactbuyer }}
+                    >
+                      {" "}
+                      Contact Buyer
+                    </a>
+                  </span>
+                </>
+              ) : (
+                ""
+              )}
             </form>
           </div>
         </div>

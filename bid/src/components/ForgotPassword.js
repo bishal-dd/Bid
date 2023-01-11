@@ -38,6 +38,7 @@ export default function ForgotPassword() {
               ref={emailRef}
               size="50"
               class="border border-dark"
+              placeholder="Enter Your Email"
             />
           </span>
         </div>
