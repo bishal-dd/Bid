@@ -15,8 +15,8 @@ export default function SignupComp({ history }) {
         try {
           await createUserWithEmailAndPassword(
             auth,
-            emailRef.current.valueOf,
-            confirmpasswordRef.current.valueOf
+            emailRef.current.value,
+            confirmpasswordRef.current.value
           );
           navigate("/");
         } catch (error) {
