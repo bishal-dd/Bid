@@ -16,8 +16,8 @@ export default function LoginComp({ history }) {
       try {
         await signInWithEmailAndPassword(
           auth,
-          emailRef.current.value,
-          passwordRef.current.value
+          emailRef.current.valueOf,
+          passwordRef.current.valueOf
         );
         navigate("/");
       } catch (error) {
