@@ -2,7 +2,7 @@ import React, { useCallback, useRef } from "react";
 import { auth } from "../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-export default function SignupComp({ history }) {
+export default function SignupComp() {
   const navigate = useNavigate();
   const emailRef = useRef("");
   const confirmpasswordRef = useRef("");
