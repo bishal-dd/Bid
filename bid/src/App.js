@@ -23,7 +23,7 @@ function App() {
       setLoading(false);
     }, 5000);
   }, []);
-
+  /* CHangesssss*/
   return (
     <LoadingScreen
       loading={loading}
